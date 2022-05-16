@@ -14,7 +14,8 @@ github_repo: "wisber.me"
 
 # OPTIONAL: override baseurl and url if using a custom domain
 # Note: leave out the trailing / from this value. 
-url: "https://wisber.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+#url: "https://wisber.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://wisber.me"
 
 ###########################################################
 #########  Special Instructions for baseurl ###############
