@@ -6,8 +6,8 @@ export const SITE: Site = {
 	href: "https://wisber.me",
 	author: "twsl & miscme",
 	locale: "en-US",
-	featuredPostCount: 2,
-	postsPerPage: 3,
+	featuredPostCount: 3,
+	postsPerPage: 5,
 };
 
 export const NAV_LINKS: SocialLink[] = [
