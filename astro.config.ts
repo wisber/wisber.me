@@ -16,7 +16,7 @@ import remarkEmoji from "remark-emoji";
 import remarkMath from "remark-math";
 
 export default defineConfig({
-	site: "https://astro-erudite.vercel.app",
+	site: "https://wisber.me",
 	integrations: [
 		expressiveCode({
 			themes: ["github-light", "github-dark"],

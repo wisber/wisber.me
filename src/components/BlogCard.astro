@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
 import AvatarComponent from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -9,9 +12,6 @@ import {
 	parseAuthors,
 } from "@/lib/data-utils";
 import { formatDate } from "@/lib/utils";
-import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
 import Link from "./Link.astro";
 
 interface Props {

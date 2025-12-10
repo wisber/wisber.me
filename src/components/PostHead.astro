@@ -1,7 +1,7 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { SITE } from "@/consts";
 import { isSubpost } from "@/lib/data-utils";
-import type { CollectionEntry } from "astro:content";
 
 interface Props {
 	post: CollectionEntry<"blog">;

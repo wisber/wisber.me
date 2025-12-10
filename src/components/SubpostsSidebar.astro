@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Link from "@/components/Link.astro";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
@@ -10,7 +11,6 @@ import {
 	getSubpostsForParent,
 	isSubpost,
 } from "@/lib/data-utils";
-import { Icon } from "astro-icon/components";
 
 const { parentId } = Astro.props;
 const currentPostId = Astro.params.id as string;
