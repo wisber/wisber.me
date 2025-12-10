@@ -1,9 +1,20 @@
 ---
-import { render } from "astro:content";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import Link from "@/components/Link.astro";
+import PostHead from "@/components/PostHead.astro";
+import PostNavigation from "@/components/PostNavigation.astro";
+import SubpostsHeader from "@/components/SubpostsHeader.astro";
+import SubpostsSidebar from "@/components/SubpostsSidebar.astro";
+import TOCHeader from "@/components/TOCHeader.astro";
+import TOCSidebar from "@/components/TOCSidebar.astro";
+import { badgeVariants } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Layout from "@/layouts/Layout.astro";
 import {
 	getAdjacentPosts,
 	getAllPostsAndSubposts,
 	getCombinedReadingTime,
+	getParentId,
 	getParentPost,
 	getPostReadingTime,
 	getSubpostCount,
@@ -12,6 +23,10 @@ import {
 	isSubpost,
 	parseAuthors,
 } from "@/lib/data-utils";
+import { formatDate } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
 	const posts = await getAllPostsAndSubposts();
@@ -24,25 +39,23 @@ export async function getStaticPaths() {
 const post = Astro.props;
 const currentPostId = Astro.params.id;
 const { Content, headings } = await render(post);
-const _authors = await parseAuthors(post.data.authors ?? []);
+const authors = await parseAuthors(post.data.authors ?? []);
 
 const isCurrentSubpost = isSubpost(currentPostId);
-const _navigation = await getAdjacentPosts(currentPostId);
-const _parentPost = isCurrentSubpost
-	? await getParentPost(currentPostId)
-	: null;
+const navigation = await getAdjacentPosts(currentPostId);
+const parentPost = isCurrentSubpost ? await getParentPost(currentPostId) : null;
 
 const hasChildPosts = await hasSubposts(currentPostId);
-const _subpostCount = !isCurrentSubpost
+const subpostCount = !isCurrentSubpost
 	? await getSubpostCount(currentPostId)
 	: 0;
-const _postReadingTime = await getPostReadingTime(currentPostId);
-const _combinedReadingTime =
+const postReadingTime = await getPostReadingTime(currentPostId);
+const combinedReadingTime =
 	hasChildPosts && !isCurrentSubpost
 		? await getCombinedReadingTime(currentPostId)
 		: null;
 
-const _tocSections = await getTOCSections(currentPostId);
+const tocSections = await getTOCSections(currentPostId);
 ---
 
 <Layout>

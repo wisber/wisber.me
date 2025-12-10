@@ -1,5 +1,7 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import AvatarComponent from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import {
 	getCombinedReadingTime,
 	getSubpostCount,
@@ -7,18 +9,20 @@ import {
 	parseAuthors,
 } from "@/lib/data-utils";
 import { formatDate } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Link from "./Link.astro";
 
 interface Props {
 	entry: CollectionEntry<"blog">;
 }
 
 const { entry } = Astro.props;
-const _formattedDate = formatDate(entry.data.date);
-const _readTime = await getCombinedReadingTime(entry.id);
-const _authors = await parseAuthors(entry.data.authors ?? []);
-const _subpostCount = !isSubpost(entry.id)
-	? await getSubpostCount(entry.id)
-	: 0;
+const formattedDate = formatDate(entry.data.date);
+const readTime = await getCombinedReadingTime(entry.id);
+const authors = await parseAuthors(entry.data.authors ?? []);
+const subpostCount = !isSubpost(entry.id) ? await getSubpostCount(entry.id) : 0;
 ---
 
 <div

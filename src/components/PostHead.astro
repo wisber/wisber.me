@@ -1,6 +1,7 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { SITE } from "@/consts";
+import { isSubpost } from "@/lib/data-utils";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
 	post: CollectionEntry<"blog">;
@@ -8,10 +9,10 @@ interface Props {
 
 const { post } = Astro.props;
 
-const _title = post.data.title || SITE.title;
-const _description = post.data.description || SITE.description;
-const _image = new URL("/static/1200x630.png", Astro.site);
-const _author =
+const title = post.data.title || SITE.title;
+const description = post.data.description || SITE.description;
+const image = new URL("/static/1200x630.png", Astro.site);
+const author =
 	post.data.authors && post.data.authors.length > 0
 		? post.data.authors.join(", ")
 		: SITE.author;

@@ -1,4 +1,6 @@
 ---
+import Link from "@/components/Link.astro";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
 	getCombinedReadingTime,
 	getParentId,
@@ -8,6 +10,7 @@ import {
 	getSubpostsForParent,
 	isSubpost,
 } from "@/lib/data-utils";
+import { Icon } from "astro-icon/components";
 
 const { parentId } = Astro.props;
 const currentPostId = Astro.params.id as string;
@@ -19,16 +22,16 @@ const subposts = await getSubpostsForParent(rootParentId);
 const parentPost = isCurrentSubpost ? await getParentPost(currentPostId) : null;
 
 const activePost = parentPost || currentPost;
-const _isActivePost = activePost?.id === currentPostId;
+const isActivePost = activePost?.id === currentPostId;
 
-const _activePostReadingTime = activePost
+const activePostReadingTime = activePost
 	? await getPostReadingTime(activePost.id)
 	: null;
-const _activePostCombinedReadingTime =
+const activePostCombinedReadingTime =
 	activePost && subposts.length > 0
 		? await getCombinedReadingTime(activePost.id)
 		: null;
-const _subpostsWithReadingTime = await Promise.all(
+const subpostsWithReadingTime = await Promise.all(
 	subposts.map(async (subpost) => ({
 		...subpost,
 		readingTime: await getPostReadingTime(subpost.id),
@@ -83,7 +86,7 @@ const _subpostsWithReadingTime = await Promise.all(
                 >
                   <Icon
                     name="lucide:book-open"
-                    class="size-4 flex-shrink-0"
+                    class="size-4 shrink-0"
                     aria-hidden="true"
                   />
                   <div class="flex flex-col">
@@ -137,7 +140,7 @@ const _subpostsWithReadingTime = await Promise.all(
                   >
                     <Icon
                       name="lucide:file"
-                      class="size-4 flex-shrink-0"
+                      class="size-4 shrink-0"
                       aria-hidden="true"
                     />
                     <div class="flex flex-col">

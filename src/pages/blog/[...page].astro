@@ -1,7 +1,12 @@
 ---
-import type { PaginateFunction } from "astro";
+import BlogCard from "@/components/BlogCard.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageHead from "@/components/PageHead.astro";
+import PaginationComponent from "@/components/ui/pagination";
 import { SITE } from "@/consts";
+import Layout from "@/layouts/Layout.astro";
 import { getAllPosts, groupPostsByYear } from "@/lib/data-utils";
+import type { PaginateFunction } from "astro";
 
 export async function getStaticPaths({
 	paginate,
@@ -15,8 +20,8 @@ export async function getStaticPaths({
 const { page } = Astro.props;
 
 const postsByYear = groupPostsByYear(page.data);
-const _years = Object.keys(postsByYear).sort(
-	(a, b) => parseInt(b, 10) - parseInt(a, 10),
+const years = Object.keys(postsByYear).sort(
+	(a, b) => parseInt(b) - parseInt(a),
 );
 ---
 

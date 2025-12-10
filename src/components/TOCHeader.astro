@@ -1,5 +1,8 @@
 ---
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn, getHeadingMargin } from "@/lib/utils";
 import type { MarkdownHeading } from "astro";
+import { Icon } from "astro-icon/components";
 
 type Props = {
 	headings: MarkdownHeading[];
@@ -42,7 +45,7 @@ const { headings } = Astro.props;
             </div>
             <span
               id="mobile-toc-current-section"
-              class="text-muted-foreground flex-grow truncate text-sm"
+              class="text-muted-foreground grow truncate text-sm"
             >
               Overview
             </span>

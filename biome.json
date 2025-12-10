@@ -1,7 +1,11 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
-		"includes": ["**", "!!**/dist", "!node_modules"],
+		"includes": [
+			"**",
+			"!!**/dist",
+			"!node_modules"
+		],
 		"ignoreUnknown": true
 	},
 	"linter": {
@@ -14,5 +18,26 @@
 		"formatter": {
 			"enabled": false
 		}
-	}
+	},
+	"overrides": [
+		{
+			"includes": [
+				"**/*.svelte",
+				"**/*.astro",
+				"**/*.vue"
+			],
+			"linter": {
+				"rules": {
+					"style": {
+						"useConst": "off",
+						"useImportType": "off"
+					},
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
+					}
+				}
+			}
+		}
+	]
 }
