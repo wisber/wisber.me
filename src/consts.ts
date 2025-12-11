@@ -2,7 +2,7 @@ import type { IconMap, Site, SocialLink } from "@/types";
 
 export const SITE: Site = {
 	title: "wisber.me",
-	description: "Stop struggling with your digital transformation!",
+	description: "Own your digital future!",
 	href: "https://wisber.me",
 	author: "twsl & miscme",
 	locale: "en-US",
