@@ -42,7 +42,7 @@
 		"rehype-pretty-code": "^0.14.1",
 		"remark-emoji": "^5.0.2",
 		"remark-math": "^6.0.0",
-		"tailwind-merge": "^3.4.0",
+		"tailwind-merge": "^3.5.0",
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5.9.3"
 	},
